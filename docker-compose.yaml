@@ -4,6 +4,10 @@ services:
 
   app:
     image: argentinaluiz/nestjs-websockets
+    deploy:
+      replicas: 1
+      placement:
+        constraints: [node.role==worker]
     build: 
       context: .
       dockerfile: Dockerfile.prod
