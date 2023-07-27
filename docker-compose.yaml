@@ -4,7 +4,7 @@ services:
   app:
     image: argentinaluiz/nestjs-websockets
     deploy:
-      replicas: 1
+      replicas: 3
       placement:
         constraints: [node.role==worker]
       labels:
