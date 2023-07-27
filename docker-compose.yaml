@@ -39,4 +39,4 @@ services:
       update_config:
         delay: 2s
       placement:
-        constraints: [node.role == manager]
+        constraints: [node.role == leader]
