@@ -15,9 +15,9 @@ services:
     networks:
       - traefik_network
     labels:
-      - 'traefik.http.routers.my-service.rule=PathPrefix(`/`)'
-      - traefik.http.services.my-service.loadBalancer.sticky.cookie.name=server_id
-      - traefik.http.services.my-service.loadBalancer.sticky.cookie.httpOnly=true
+      - 'traefik.http.routers.app.rule=PathPrefix(`/`)'
+      - traefik.http.services.app.loadBalancer.sticky.cookie.name=server_id
+      - traefik.http.services.app.loadBalancer.sticky.cookie.httpOnly=true
 
   traefik:
     image: traefik:2.4
