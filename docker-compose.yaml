@@ -31,7 +31,7 @@ services:
       #- ./traefik.yml:/etc/traefik/traefik.yml
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
-      - 3000:80
+      - 80:80
       - 8080:8080
     networks:
       - traefik_network
