@@ -18,8 +18,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.prod
-    ports:
-      - "3001:3000"
+    # ports:
+    #   - "3001:3000"
     networks:
       - traefik_network
     labels: # não precisa com docker swarm
