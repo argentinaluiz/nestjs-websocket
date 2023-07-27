@@ -7,6 +7,13 @@ services:
       replicas: 3
       placement:
         constraints: [node.role==worker]
+      labels:
+          - traefik.enable=true
+          - traefik.http.routers.app.entrypoints=app
+          - 'traefik.http.routers.app.rule=PathPrefix(`/`)'
+          - traefik.http.services.api.loadBalancer.sticky.cookie.name=server_id
+          - traefik.http.services.api.loadBalancer.sticky.cookie.httpOnly=true
+          - traefik.http.services.api.loadbalancer.server.port=3000    
     build:
       context: .
       dockerfile: Dockerfile.prod
