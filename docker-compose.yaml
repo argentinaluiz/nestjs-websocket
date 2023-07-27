@@ -11,20 +11,24 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile.prod
-    ports:
-      - "3000:3000"
+    # ports:
+    #   - "3000:3000"
     labels:
       - "traefik.http.routers.my-service.rule=PathPrefix(`/`)"
       - traefik.http.services.my-service.loadBalancer.sticky.cookie.name=server_id
       - traefik.http.services.my-service.loadBalancer.sticky.cookie.httpOnly=true
   
   traefik:
-    image: traefik
+    image: traefik:2.4
     volumes:
+      - ./traefik.yml:/etc/traefik/traefik.yml
       - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "3000:80"
+      - "8080:8080"
     links:
       - app
     deploy:
       replicas: 1
       placement:
-        constraints: [node.role == leader]
+        constraints: [node.role==leader]
