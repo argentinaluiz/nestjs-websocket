@@ -4,3 +4,5 @@ docker swarm join --token SWMTKN-1-2svrxlf8tg9qv7std4sr5p02pvdzucazz0vp4p7kyuf2e
 https://github.com/argentinaluiz/nestjs-websocket.git
 
 docker stack deploy -c ./docker-compose.yaml app
+
+docker network create -d overlay traefik_network --attachable
