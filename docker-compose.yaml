@@ -22,9 +22,9 @@ services:
     #   - "3001:3000"
     networks:
       - traefik_network
-    depends_on:
-      redis:
-        condition: service_healthy
+    # depends_on:
+    #   redis:
+    #     condition: service_healthy
     labels: # não precisa com docker swarm
       - traefik.enable=true
       - traefik.http.routers.app.entrypoints=app
