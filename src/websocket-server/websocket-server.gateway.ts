@@ -6,7 +6,11 @@ import {
 import { Server } from 'socket.io';
 
 @WebSocketGateway({
-  cors: true,
+  cors: {
+    origin: true,
+    methods: ['GET', 'POST'],
+    credentials: true,
+  },
 })
 export class WebsocketServerGateway {
   @WebSocketServer()
@@ -19,7 +23,7 @@ export class WebsocketServerGateway {
     return 'Hello world!';
   }
 
-  async getClients(){
+  async getClients() {
     const sockets = await this.server.fetchSockets();
     return sockets.map((socket) => socket.id);
   }

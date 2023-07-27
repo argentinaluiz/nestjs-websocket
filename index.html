@@ -9,7 +9,9 @@
   <body>
     <script>
         //var socket = io('http://localhost:3001');
-        var socket = io('http://ip172-18-0-16-cj0t23ksnmng00e19tkg-3000.direct.labs.play-with-docker.com/');
+        var socket = io('http://ip172-18-0-16-cj0t23ksnmng00e19tkg-3000.direct.labs.play-with-docker.com/', {
+            withCredentials: true
+        });
         socket.on('connect', function () {
           console.log('connected');
           socket.emit('message', 'Hello Server');

@@ -28,7 +28,7 @@ services:
       - 'traefik.http.routers.app.rule=PathPrefix(`/`)'
       - traefik.http.services.app.loadBalancer.sticky.cookie.name=server_id
       - traefik.http.services.app.loadbalancer.sticky=true
-      #- traefik.http.services.app.loadBalancer.sticky.cookie.httpOnly=true
+      - traefik.http.services.app.loadBalancer.sticky.cookie.httpOnly=true
       - traefik.http.services.app.loadbalancer.server.port=3000
 
   traefik:
