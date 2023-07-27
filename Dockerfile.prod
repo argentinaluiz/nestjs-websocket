@@ -12,6 +12,6 @@ COPY --chown=node:node . .
 
 EXPOSE 3000
 
-ENV DEBUG=*
+#ENV DEBUG=*
 
 CMD ["npm", "run", "start"]
