@@ -28,7 +28,7 @@ services:
       - --entryPoints.app.address=:3000
       - --log.level=DEBUG
     volumes:
-      - ./traefik.yml:/etc/traefik/traefik.yml
+      #- ./traefik.yml:/etc/traefik/traefik.yml
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - '3000:80'
