@@ -38,7 +38,7 @@ services:
       - --providers.docker.exposedByDefault=false 
       - --providers.docker=true
       - --providers.docker.swarmMode=true
-      - --providers.docker.network=traefik_network
+      #- --providers.docker.network=traefik_network
       - --entryPoints.app.address=:80
       - --log.level=DEBUG
     volumes:
