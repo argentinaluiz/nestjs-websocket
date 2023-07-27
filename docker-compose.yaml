@@ -20,8 +20,8 @@ services:
       dockerfile: Dockerfile.prod
     ports:
       - "3001:3000"
-    # networks:
-    #   - traefik_network
+    networks:
+      - traefik_network
     labels: # não precisa com docker swarm
       - traefik.enable=true
       - traefik.http.routers.app.entrypoints=app
@@ -38,7 +38,7 @@ services:
       - --providers.docker.exposedByDefault=false 
       - --providers.docker=true
       - --providers.docker.swarmMode=true
-      #- --providers.docker.network=traefik_network
+      - --providers.docker.network=traefik_network
       - --entryPoints.app.address=:80
       - --log.level=DEBUG
     volumes:
@@ -47,10 +47,8 @@ services:
     ports:
       - 3000:80
       - 8080:8080
-    links:
-      - app
-    # networks:
-    #   - traefik_network
+    networks:
+      - traefik_network
     depends_on:
       - app
     deploy:
@@ -58,6 +56,6 @@ services:
       placement:
         constraints: [node.role==manager]
 
-# networks:
-#   traefik_network:
-#     external: true
+networks:
+  traefik_network:
+    external: true
